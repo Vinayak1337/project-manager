@@ -31,7 +31,7 @@ export class ProjectInput extends Component <HTMLDivElement, HTMLElement> {
             value: enteredDescription,
             required: true,
             minLength: 10,
-            maxLength: 260,
+            maxLength: 1024,
         }
 
         const peopleValidatable: Validatable = {
@@ -42,7 +42,7 @@ export class ProjectInput extends Component <HTMLDivElement, HTMLElement> {
         }
         
         if ([titleValidatable, descriptionValidatable, peopleValidatable].some(validatable => !validate(validatable))) {
-            alert('Invalid input.');
+            alert('Title must be minmum 3 or maximum 16 length long.\nTitle must be minmum 10 or maximum 1024 length long.\nNumber of people must be minmum 1 or maximum 10 assigned.');
             return;
         } else {
             return [enteredTitle, enteredDescription, +enteredPeople];

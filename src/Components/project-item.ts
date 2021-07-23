@@ -25,8 +25,8 @@ export class ProjectItem extends Component <HTMLUListElement, HTMLLIElement> imp
     }
 
     @AutoBind
-    dragEndHandler(_event: DragEvent) {
-        console.log('event end');
+    dragEndHandler(event: DragEvent) {
+        event.dataTransfer!.clearData('text/plain');
     }
 
     configure() {
