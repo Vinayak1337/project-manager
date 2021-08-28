@@ -127,6 +127,17 @@ button:active {
 	background: #f7f7f7;
 }
 
+.projects li button {
+	position: relative;
+	left: 95%;
+	height: 20px;
+	width: 25px;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+}
+
 @media only screen and (min-width: 650px) {
 	#finished-projects,
 	#active-projects,

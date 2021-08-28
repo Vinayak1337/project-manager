@@ -5,14 +5,16 @@ import { Component } from "./component";
 
 export class ProjectItem extends Component <HTMLUListElement, HTMLLIElement> implements Draggable {
     private project: Project;
+    private handleDelete: (prjId: string) => void;
 
     get persons() {
         return this.project.people > 1 ? `${this.project.people} persons` : `${this.project.people} person`
     }
 
-    constructor(hostId: string, project: Project) {
+    constructor(hostId: string, project: Project, handleDelete: (prjId: string) => void) {
         super('single-project', hostId, false, project.id);
         this.project = project;
+        this.handleDelete = handleDelete;
 
         this.configure();
         this.renderContent();
@@ -38,5 +40,7 @@ export class ProjectItem extends Component <HTMLUListElement, HTMLLIElement> imp
         this.element.querySelector('h2')!.textContent = this.project.title;
         this.element.querySelector('h3')!.textContent = this.persons + ' assigned';
         this.element.querySelector('p')!.textContent = this.project.description;
+        const btn = this.element.querySelector('button')! as HTMLButtonElement;
+        btn.addEventListener("click", this.handleDelete.bind(null, this.project.id));
     }
-}    
+}

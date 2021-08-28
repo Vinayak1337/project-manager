@@ -57,7 +57,7 @@ export class ProjectInput extends Component <HTMLDivElement, HTMLElement> {
     }
 
     @AutoBind
-    private submitHandler(event: Event) {
+    private submitHandler(event: Event): void {
         event.preventDefault();
         const userInput = this.gatherUserInput()!;
         if (Array.isArray(userInput)) {
@@ -67,7 +67,8 @@ export class ProjectInput extends Component <HTMLDivElement, HTMLElement> {
         }
     }
 
-    configure() {
+    configure(): void
+    {
         this.titleInputElement = this.element.querySelector('#title') as HTMLInputElement;
         this.descriptionInputElement = this.element.querySelector('#description') as HTMLInputElement;
         this.peopleInputElement = this.element.querySelector('#people') as HTMLInputElement;

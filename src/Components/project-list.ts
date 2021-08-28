@@ -50,12 +50,16 @@ export class ProjectList extends Component<HTMLDivElement, HTMLElement> implemen
         })
     }
 
+    private deleteProject(prjId: string) {
+        projectStore.deleteProject(prjId);
+    }
+
     private renderProjects() {
         const listElement = document.getElementById(`${this.type}-projects-list`)! as HTMLUListElement;
 
         listElement.innerHTML = '';
         for (const project of this.assignedProjects) {
-            new ProjectItem(this.element.querySelector('ul')!.id, project);
+            new ProjectItem(this.element.querySelector('ul')!.id, project, this.deleteProject);
         }
     }
     

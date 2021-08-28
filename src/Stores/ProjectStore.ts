@@ -38,6 +38,16 @@ export class ProjectStore extends Store<Project> {
         }
     }
 
+    deleteProject(id: string) {
+        const project = this.projects.find(p => p.id === id);
+        if (!project) return;
+        this.projects.splice(this.projects.indexOf(project), 1);
+
+        for (const listenerFn of this.listeners) {
+            listenerFn(this.projects.slice());
+        }
+    }
+
     moveProject(id: string, newStatus: ProjectStatus) {
     const project = this.projects.find(p => p.id === id);
     if (project && (project.status !== newStatus)) {

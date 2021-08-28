@@ -10,7 +10,7 @@ export interface DragTarget {
 }
 
 export enum ProjectStatus {
-    Active = 'Active', Finished = 'Finished'
+    Active = 'active', Finished = 'finished'
 }
     
 export type Listener<T> = (items: T[]) => void;
